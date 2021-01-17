@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: api-gateway
+
+
+
+
+server:
+  port: 2020
+  
+zuul:
+ routes:
+  doctor-service:
+  path: /rest/**
+  service-id: doctor-service
+  url: http://localhost:8080/doctor-service/
+  strip-prefix: false
+  
+  
+  
+  
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          "*"
